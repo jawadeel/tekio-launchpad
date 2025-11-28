@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
           {/* Brand */}
           <div className="md:col-span-2">
-            <img src={tekioLogo} alt="Tekio" className="h-10 w-auto mb-4 brightness-0 invert object-scale-down" />
+            <img src={tekioLogo} alt="Tekio" className="h-10 w-auto mb-4 brightness-0 invert object-fill border-0 border-accent rounded-md shadow-lg opacity-0" />
             <p className="text-accent-foreground/70 text-sm max-w-md">
               {t('footer.tagline')}
             </p>
