@@ -1,18 +1,17 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import tekioLogo from '@/assets/tekio-logo.jpeg';
-
 const Footer = () => {
-  const { t } = useLanguage();
+  const {
+    t
+  } = useLanguage();
   const currentYear = new Date().getFullYear();
-
-  return (
-    <footer className="bg-accent text-accent-foreground">
-      <div className="tekio-container py-12 md:py-16">
+  return <footer className="bg-accent text-accent-foreground">
+      <div className="tekio-container py-12 md:py-16 rounded-md opacity-100 shadow-tekio-hover bg-accent text-secondary">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
           {/* Brand */}
           <div className="md:col-span-2">
-            <img src={tekioLogo} alt="Tekio" className="h-10 w-auto mb-4 brightness-0 invert" />
+            <img src={tekioLogo} alt="Tekio" className="h-10 w-auto mb-4 brightness-0 invert object-scale-down" />
             <p className="text-accent-foreground/70 text-sm max-w-md">
               {t('footer.tagline')}
             </p>
@@ -70,8 +69,6 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
