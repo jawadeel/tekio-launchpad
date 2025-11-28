@@ -13,6 +13,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["Inter", "system-ui", "sans-serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -57,6 +60,15 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // TEKIO custom colors
+        tekio: {
+          blue: "hsl(var(--tekio-blue))",
+          navy: "hsl(var(--tekio-navy))",
+          gray: "hsl(var(--tekio-gray))",
+          charcoal: "hsl(var(--tekio-charcoal))",
+          lime: "hsl(var(--tekio-lime))",
+          sky: "hsl(var(--tekio-sky))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -65,25 +77,32 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        pulse: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.5" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        float: "float 3s ease-in-out infinite",
+        "pulse-slow": "pulse 3s ease-in-out infinite",
+      },
+      boxShadow: {
+        tekio: "0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04)",
+        "tekio-hover": "0 10px 30px -5px rgba(26, 115, 232, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+        "tekio-button": "0 4px 14px 0 rgba(26, 115, 232, 0.3)",
       },
     },
   },
