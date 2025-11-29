@@ -14,7 +14,57 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      leads: {
+        Row: {
+          ai_suggestion: string | null
+          company_name: string | null
+          contact_name: string | null
+          created_at: string
+          email: string
+          id: string
+          language: Database["public"]["Enums"]["lead_language"]
+          message: string | null
+          nb_users_estimate: string | null
+          notes: string | null
+          phone: string | null
+          source: string
+          status: Database["public"]["Enums"]["lead_status"]
+          updated_at: string
+        }
+        Insert: {
+          ai_suggestion?: string | null
+          company_name?: string | null
+          contact_name?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          language?: Database["public"]["Enums"]["lead_language"]
+          message?: string | null
+          nb_users_estimate?: string | null
+          notes?: string | null
+          phone?: string | null
+          source: string
+          status?: Database["public"]["Enums"]["lead_status"]
+          updated_at?: string
+        }
+        Update: {
+          ai_suggestion?: string | null
+          company_name?: string | null
+          contact_name?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          language?: Database["public"]["Enums"]["lead_language"]
+          message?: string | null
+          nb_users_estimate?: string | null
+          notes?: string | null
+          phone?: string | null
+          source?: string
+          status?: Database["public"]["Enums"]["lead_status"]
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +73,8 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      lead_language: "FR" | "NL" | "EN"
+      lead_status: "new" | "contacted" | "proposal" | "won" | "lost"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +201,9 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      lead_language: ["FR", "NL", "EN"],
+      lead_status: ["new", "contacted", "proposal", "won", "lost"],
+    },
   },
 } as const

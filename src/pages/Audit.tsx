@@ -6,11 +6,19 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useToast } from '@/hooks/use-toast';
+import { useCreateLead, LeadLanguage } from '@/hooks/useLeads';
 
 const Audit = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { toast } = useToast();
+  const createLead = useCreateLead();
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const languageMap: Record<string, LeadLanguage> = {
+    fr: 'FR',
+    nl: 'NL',
+    en: 'EN',
+  };
 
   const benefits = [
     {
@@ -35,15 +43,42 @@ const Audit = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Demande envoyée !",
-      description: "Nous vous contacterons sous 24h pour planifier votre audit.",
-    });
-    
-    setIsSubmitting(false);
-    (e.target as HTMLFormElement).reset();
+    const formData = new FormData(e.currentTarget);
+    const firstName = formData.get('firstName') as string;
+    const lastName = formData.get('lastName') as string;
+    const email = formData.get('email') as string;
+    const company = formData.get('company') as string;
+    const phone = formData.get('phone') as string;
+    const employees = formData.get('employees') as string;
+    const needs = formData.get('needs') as string;
+
+    try {
+      await createLead.mutateAsync({
+        contact_name: `${firstName} ${lastName}`.trim(),
+        email,
+        company_name: company,
+        phone: phone || undefined,
+        nb_users_estimate: employees || undefined,
+        message: needs || undefined,
+        language: languageMap[language],
+        source: 'audit_page',
+      });
+      
+      toast({
+        title: language === 'fr' ? "Demande envoyée !" :
+               language === 'nl' ? "Aanvraag verzonden!" :
+               "Request sent!",
+        description: language === 'fr' ? "Nous vous contacterons sous 24h pour planifier votre audit." :
+                     language === 'nl' ? "We nemen binnen 24 uur contact met u op om uw audit te plannen." :
+                     "We will contact you within 24h to schedule your audit.",
+      });
+      
+      (e.target as HTMLFormElement).reset();
+    } catch (error) {
+      // Error is handled in the hook
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

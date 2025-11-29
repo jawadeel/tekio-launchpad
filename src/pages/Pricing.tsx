@@ -1,11 +1,34 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Check, X } from 'lucide-react';
+import { Check, X, Send } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useToast } from '@/hooks/use-toast';
+import { useCreateLead, LeadLanguage } from '@/hooks/useLeads';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
 
 const Pricing = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const { toast } = useToast();
+  const createLead = useCreateLead();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const [showContactDialog, setShowContactDialog] = useState(false);
+
+  const languageMap: Record<string, LeadLanguage> = {
+    fr: 'FR',
+    nl: 'NL',
+    en: 'EN',
+  };
 
   const plans = [
     {
@@ -57,6 +80,51 @@ const Pricing = () => {
       popular: false,
     },
   ];
+
+  const handlePlanClick = (planName: string) => {
+    setSelectedPlan(planName);
+    setShowContactDialog(true);
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const company = formData.get('company') as string;
+    const employees = formData.get('employees') as string;
+    const message = formData.get('message') as string;
+
+    try {
+      await createLead.mutateAsync({
+        contact_name: name,
+        email,
+        company_name: company || undefined,
+        nb_users_estimate: employees || undefined,
+        message: `Plan intéressé: ${selectedPlan}\n\n${message || ''}`.trim(),
+        language: languageMap[language],
+        source: 'pricing_page',
+      });
+      
+      toast({
+        title: language === 'fr' ? "Demande envoyée !" :
+               language === 'nl' ? "Aanvraag verzonden!" :
+               "Request sent!",
+        description: language === 'fr' ? "Nous vous contacterons rapidement avec une offre personnalisée." :
+                     language === 'nl' ? "We nemen snel contact met u op met een persoonlijk aanbod." :
+                     "We will contact you shortly with a personalized offer.",
+      });
+      
+      setShowContactDialog(false);
+      (e.target as HTMLFormElement).reset();
+    } catch (error) {
+      // Error is handled in the hook
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <Layout>
@@ -125,15 +193,14 @@ const Pricing = () => {
                   ))}
                 </ul>
 
-                <Link to="/contact" className="mt-auto">
-                  <Button
-                    variant={plan.popular ? 'cta' : 'outline'}
-                    className="w-full"
-                    size="lg"
-                  >
-                    {t('pricing.cta')}
-                  </Button>
-                </Link>
+                <Button
+                  variant={plan.popular ? 'cta' : 'outline'}
+                  className="w-full mt-auto"
+                  size="lg"
+                  onClick={() => handlePlanClick(plan.name)}
+                >
+                  {t('pricing.cta')}
+                </Button>
               </div>
             ))}
           </div>
@@ -152,6 +219,99 @@ const Pricing = () => {
           </div>
         </div>
       </section>
+
+      {/* Contact Dialog */}
+      <Dialog open={showContactDialog} onOpenChange={setShowContactDialog}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Demander un devis - {selectedPlan}</DialogTitle>
+            <DialogDescription>
+              Remplissez ce formulaire et nous vous contacterons avec une offre personnalisée.
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label htmlFor="dialog-name" className="block text-sm font-medium text-foreground mb-1">
+                Nom *
+              </label>
+              <Input
+                id="dialog-name"
+                name="name"
+                type="text"
+                required
+                placeholder="Votre nom"
+              />
+            </div>
+            <div>
+              <label htmlFor="dialog-email" className="block text-sm font-medium text-foreground mb-1">
+                Email *
+              </label>
+              <Input
+                id="dialog-email"
+                name="email"
+                type="email"
+                required
+                placeholder="vous@entreprise.be"
+              />
+            </div>
+            <div>
+              <label htmlFor="dialog-company" className="block text-sm font-medium text-foreground mb-1">
+                Entreprise
+              </label>
+              <Input
+                id="dialog-company"
+                name="company"
+                type="text"
+                placeholder="Nom de votre entreprise"
+              />
+            </div>
+            <div>
+              <label htmlFor="dialog-employees" className="block text-sm font-medium text-foreground mb-1">
+                Nombre d'utilisateurs
+              </label>
+              <select
+                id="dialog-employees"
+                name="employees"
+                className="w-full h-10 px-3 rounded-md border border-input bg-background text-sm"
+              >
+                <option value="">Sélectionnez</option>
+                <option value="1-5">1-5</option>
+                <option value="6-10">6-10</option>
+                <option value="11-25">11-25</option>
+                <option value="26-50">26-50</option>
+                <option value="50+">50+</option>
+              </select>
+            </div>
+            <div>
+              <label htmlFor="dialog-message" className="block text-sm font-medium text-foreground mb-1">
+                Message (optionnel)
+              </label>
+              <Textarea
+                id="dialog-message"
+                name="message"
+                rows={3}
+                placeholder="Des besoins spécifiques ?"
+                className="resize-none"
+              />
+            </div>
+            <Button
+              type="submit"
+              variant="cta"
+              className="w-full"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? (
+                'Envoi...'
+              ) : (
+                <>
+                  Envoyer ma demande
+                  <Send className="ml-2 h-4 w-4" />
+                </>
+              )}
+            </Button>
+          </form>
+        </DialogContent>
+      </Dialog>
     </Layout>
   );
 };
