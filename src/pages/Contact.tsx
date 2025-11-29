@@ -6,26 +6,55 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useToast } from '@/hooks/use-toast';
+import { useCreateLead, LeadLanguage } from '@/hooks/useLeads';
 
 const Contact = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { toast } = useToast();
+  const createLead = useCreateLead();
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const languageMap: Record<string, LeadLanguage> = {
+    fr: 'FR',
+    nl: 'NL',
+    en: 'EN',
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Message envoyé !",
-      description: "Nous vous répondrons dans les plus brefs délais.",
-    });
-    
-    setIsSubmitting(false);
-    (e.target as HTMLFormElement).reset();
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const company = formData.get('company') as string;
+    const message = formData.get('message') as string;
+
+    try {
+      await createLead.mutateAsync({
+        contact_name: name,
+        email,
+        company_name: company || undefined,
+        message,
+        language: languageMap[language],
+        source: 'contact_page',
+      });
+      
+      toast({
+        title: language === 'fr' ? "Message envoyé !" : 
+               language === 'nl' ? "Bericht verzonden!" : 
+               "Message sent!",
+        description: language === 'fr' ? "Nous vous répondrons dans les plus brefs délais." :
+                     language === 'nl' ? "We nemen zo snel mogelijk contact met u op." :
+                     "We will respond as soon as possible.",
+      });
+      
+      (e.target as HTMLFormElement).reset();
+    } catch (error) {
+      // Error is handled in the hook
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
