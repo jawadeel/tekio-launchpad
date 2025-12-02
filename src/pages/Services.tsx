@@ -4,12 +4,20 @@ import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 
+// Service images
+import serviceSupport from '@/assets/services/service-support.png';
+import serviceCloud from '@/assets/services/service-cloud.png';
+import serviceSecurity from '@/assets/services/service-security.png';
+import serviceTelecom from '@/assets/services/service-telecom.png';
+import serviceProjects from '@/assets/services/service-projects.png';
+
 const Services = () => {
   const { t } = useLanguage();
 
   const services = [
     {
       icon: Headphones,
+      image: serviceSupport,
       titleKey: 'services.support.title',
       descKey: 'services.support.desc',
       detailKeys: [
@@ -21,6 +29,7 @@ const Services = () => {
     },
     {
       icon: Cloud,
+      image: serviceCloud,
       titleKey: 'services.cloud.title',
       descKey: 'services.cloud.desc',
       detailKeys: [
@@ -32,6 +41,7 @@ const Services = () => {
     },
     {
       icon: Lock,
+      image: serviceSecurity,
       titleKey: 'services.security.title',
       descKey: 'services.security.desc',
       detailKeys: [
@@ -43,6 +53,7 @@ const Services = () => {
     },
     {
       icon: Phone,
+      image: serviceTelecom,
       titleKey: 'services.telecom.title',
       descKey: 'services.telecom.desc',
       detailKeys: [
@@ -54,6 +65,7 @@ const Services = () => {
     },
     {
       icon: FolderKanban,
+      image: serviceProjects,
       titleKey: 'services.projects.title',
       descKey: 'services.projects.desc',
       detailKeys: [
@@ -109,10 +121,14 @@ const Services = () => {
                     ))}
                   </ul>
                 </div>
-                <div className={`aspect-video bg-gradient-to-br from-primary/10 to-tekio-sky/10 rounded-xl flex items-center justify-center ${
+                <div className={`aspect-video rounded-xl overflow-hidden ${
                   index % 2 !== 0 ? 'md:order-1' : ''
                 }`}>
-                  <service.icon className="h-24 w-24 text-primary/30" />
+                  <img 
+                    src={service.image} 
+                    alt={t(service.titleKey)} 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
             ))}
