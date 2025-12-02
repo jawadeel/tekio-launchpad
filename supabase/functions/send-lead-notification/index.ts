@@ -107,8 +107,8 @@ const handler = async (req: Request): Promise<Response> => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Tekio Leads <onboarding@resend.dev>", // Changer vers notifications@tekio.be après vérification du domaine
-        to: ["info@tekio.be"],
+        from: "Tekio Leads <onboarding@resend.dev>",
+        to: ["elhadouchijawade@gmail.com"], // TODO: Changer vers info@tekio.be après vérification du domaine tekio.be sur resend.com/domains
         subject: `🎯 Nouveau lead: ${lead.contact_name || lead.email} - ${lead.company_name || 'Particulier'}`,
         html: emailHtml,
       }),
