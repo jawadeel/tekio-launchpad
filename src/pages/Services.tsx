@@ -121,13 +121,13 @@ const Services = () => {
                     ))}
                   </ul>
                 </div>
-                <div className={`aspect-video rounded-xl overflow-hidden bg-gradient-to-br from-primary/5 to-tekio-sky/5 flex items-center justify-center ${
+                <div className={`aspect-video rounded-xl overflow-hidden bg-gradient-to-br from-primary/5 to-tekio-sky/5 flex items-center justify-center group/image ${
                   index % 2 !== 0 ? 'md:order-1' : ''
                 }`}>
                   <img 
                     src={service.image} 
                     alt={t(service.titleKey)} 
-                    className="w-full h-full object-contain p-4"
+                    className="w-full h-full object-contain p-4 transition-transform duration-500 ease-out group-hover/image:scale-110"
                     loading="lazy"
                     decoding="async"
                   />
