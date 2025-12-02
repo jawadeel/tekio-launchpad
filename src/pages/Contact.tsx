@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MapPin, Mail, Phone, Send } from 'lucide-react';
+import { MapPin, Mail, MessageCircle, Send } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -180,13 +180,13 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Phone className="h-6 w-6 text-primary" />
+                  <div className="w-12 h-12 rounded-xl bg-[#25D366]/10 flex items-center justify-center flex-shrink-0">
+                    <MessageCircle className="h-6 w-6 text-[#25D366]" />
                   </div>
                   <div>
                     <h4 className="font-medium text-foreground mb-1">{t('contact.info.phone.label')}</h4>
-                    <a href="tel:+3225551234" className="text-primary hover:underline">
-                      +32 2 555 12 34
+                    <a href="https://wa.me/32470972921" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline flex items-center gap-2">
+                      +32 470 97 29 21
                     </a>
                   </div>
                 </div>
