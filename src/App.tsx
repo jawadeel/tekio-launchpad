@@ -11,6 +11,8 @@ import Method from "./pages/Method";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Audit from "./pages/Audit";
+import Legal from "./pages/Legal";
+import Privacy from "./pages/Privacy";
 import LeadsList from "./pages/admin/LeadsList";
 import LeadDetail from "./pages/admin/LeadDetail";
 import NotFound from "./pages/NotFound";
@@ -32,6 +34,8 @@ const App = () => (
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/audit" element={<Audit />} />
+            <Route path="/legal" element={<Legal />} />
+            <Route path="/privacy" element={<Privacy />} />
             {/* Admin Routes */}
             <Route path="/admin/leads" element={<LeadsList />} />
             <Route path="/admin/leads/:id" element={<LeadDetail />} />
