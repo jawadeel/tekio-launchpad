@@ -98,7 +98,6 @@ export function useCreateLead() {
       if (error) throw error;
 
       // 2. Envoi vers n8n (en parallèle, non-bloquant)
-      // Détermine le type de lead basé sur la source
       const leadType: LeadType = input.source.includes('audit') ? 'audit' 
         : input.source.includes('expert') ? 'expert' 
         : 'contact';
@@ -114,8 +113,29 @@ export function useCreateLead() {
         nb_users_estimate: input.nb_users_estimate,
         language: input.language,
       }).catch(err => {
-        // Log silencieux - ne bloque pas l'UX
         console.warn('[useCreateLead] Erreur n8n (non-bloquante):', err);
+      });
+
+      // 3. Envoi d'email de notification via edge function (non-bloquant)
+      supabase.functions.invoke('send-lead-notification', {
+        body: {
+          contact_name: input.contact_name,
+          email: input.email,
+          company_name: input.company_name,
+          phone: input.phone,
+          message: input.message,
+          source: input.source,
+          language: input.language,
+          nb_users_estimate: input.nb_users_estimate,
+        },
+      }).then(response => {
+        if (response.error) {
+          console.warn('[useCreateLead] Erreur email notification:', response.error);
+        } else {
+          console.log('[useCreateLead] Email notification envoyé');
+        }
+      }).catch(err => {
+        console.warn('[useCreateLead] Erreur email (non-bloquante):', err);
       });
 
       return data as Lead;
