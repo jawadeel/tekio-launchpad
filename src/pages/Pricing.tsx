@@ -220,73 +220,73 @@ const Pricing = () => {
       <Dialog open={showContactDialog} onOpenChange={setShowContactDialog}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>Demander un devis - {selectedPlan}</DialogTitle>
+            <DialogTitle>{t('pricing.dialog.title')} - {selectedPlan}</DialogTitle>
             <DialogDescription>
-              Remplissez ce formulaire et nous vous contacterons avec une offre personnalisée.
+              {t('pricing.dialog.desc')}
             </DialogDescription>
           </DialogHeader>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="dialog-name" className="block text-sm font-medium text-foreground mb-1">
-                Nom *
+                {t('pricing.dialog.name')} *
               </label>
               <Input
                 id="dialog-name"
                 name="name"
                 type="text"
                 required
-                placeholder="Votre nom"
+                placeholder={t('pricing.dialog.placeholder.name')}
               />
             </div>
             <div>
               <label htmlFor="dialog-email" className="block text-sm font-medium text-foreground mb-1">
-                Email *
+                {t('pricing.dialog.email')} *
               </label>
               <Input
                 id="dialog-email"
                 name="email"
                 type="email"
                 required
-                placeholder="vous@entreprise.be"
+                placeholder={t('pricing.dialog.placeholder.email')}
               />
             </div>
             <div>
               <label htmlFor="dialog-company" className="block text-sm font-medium text-foreground mb-1">
-                Entreprise
+                {t('pricing.dialog.company')}
               </label>
               <Input
                 id="dialog-company"
                 name="company"
                 type="text"
-                placeholder="Nom de votre entreprise"
+                placeholder={t('pricing.dialog.placeholder.company')}
               />
             </div>
             <div>
               <label htmlFor="dialog-employees" className="block text-sm font-medium text-foreground mb-1">
-                Nombre d'utilisateurs
+                {t('pricing.dialog.users')}
               </label>
               <select
                 id="dialog-employees"
                 name="employees"
                 className="w-full h-10 px-3 rounded-md border border-input bg-background text-sm"
               >
-                <option value="">Sélectionnez</option>
-                <option value="1-5">1-5</option>
-                <option value="6-10">6-10</option>
-                <option value="11-25">11-25</option>
-                <option value="26-50">26-50</option>
-                <option value="50+">50+</option>
+                <option value="">{t('pricing.dialog.select.default')}</option>
+                <option value="1-5">{t('pricing.dialog.select.1-5')}</option>
+                <option value="6-10">{t('pricing.dialog.select.6-10')}</option>
+                <option value="11-25">{t('pricing.dialog.select.11-25')}</option>
+                <option value="26-50">{t('pricing.dialog.select.26-50')}</option>
+                <option value="50+">{t('pricing.dialog.select.50+')}</option>
               </select>
             </div>
             <div>
               <label htmlFor="dialog-message" className="block text-sm font-medium text-foreground mb-1">
-                Message (optionnel)
+                {t('pricing.dialog.message')}
               </label>
               <Textarea
                 id="dialog-message"
                 name="message"
                 rows={3}
-                placeholder="Des besoins spécifiques ?"
+                placeholder={t('pricing.dialog.placeholder.message')}
                 className="resize-none"
               />
             </div>
@@ -297,10 +297,10 @@ const Pricing = () => {
               disabled={isSubmitting}
             >
               {isSubmitting ? (
-                'Envoi...'
+                t('pricing.dialog.submitting')
               ) : (
                 <>
-                  Envoyer ma demande
+                  {t('pricing.dialog.submit')}
                   <Send className="ml-2 h-4 w-4" />
                 </>
               )}
