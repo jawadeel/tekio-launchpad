@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import { Target, Eye, User, Heart, ArrowRight } from 'lucide-react';
+import { Target, Eye, ArrowRight } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
+import founderImage from '@/assets/founder.jpg';
 
 const About = () => {
   const { t } = useLanguage();
@@ -64,8 +65,13 @@ const About = () => {
           <div className="bg-secondary rounded-2xl p-8 md:p-12 mb-16">
             <div className="grid md:grid-cols-3 gap-8 items-center">
               <div className="md:col-span-1">
-                <div className="w-32 h-32 mx-auto md:mx-0 rounded-full bg-gradient-to-br from-primary/20 to-tekio-sky/20 flex items-center justify-center">
-                  <User className="h-16 w-16 text-primary/50" />
+                <div className="relative w-48 h-48 mx-auto md:mx-0">
+                  <img 
+                    src={founderImage} 
+                    alt="Fondateur Tekio"
+                    className="w-full h-full object-cover rounded-2xl shadow-tekio-hover"
+                  />
+                  <div className="absolute inset-0 rounded-2xl ring-1 ring-primary/10"></div>
                 </div>
               </div>
               <div className="md:col-span-2 text-center md:text-left">
