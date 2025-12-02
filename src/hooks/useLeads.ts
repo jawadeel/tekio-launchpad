@@ -1,6 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import { sendLead, LeadType } from '@/services/leadService';
 
 export type LeadLanguage = 'FR' | 'NL' | 'EN';
 export type LeadStatus = 'new' | 'contacted' | 'proposal' | 'won' | 'lost';
@@ -77,6 +78,7 @@ export function useCreateLead() {
 
   return useMutation({
     mutationFn: async (input: CreateLeadInput) => {
+      // 1. Sauvegarde dans Supabase
       const { data, error } = await supabase
         .from('leads')
         .insert({
@@ -94,6 +96,28 @@ export function useCreateLead() {
         .single();
       
       if (error) throw error;
+
+      // 2. Envoi vers n8n (en parallèle, non-bloquant)
+      // Détermine le type de lead basé sur la source
+      const leadType: LeadType = input.source.includes('audit') ? 'audit' 
+        : input.source.includes('expert') ? 'expert' 
+        : 'contact';
+
+      sendLead({
+        type: leadType,
+        source: input.source,
+        name: input.contact_name,
+        email: input.email,
+        phone: input.phone,
+        company: input.company_name,
+        message: input.message,
+        nb_users_estimate: input.nb_users_estimate,
+        language: input.language,
+      }).catch(err => {
+        // Log silencieux - ne bloque pas l'UX
+        console.warn('[useCreateLead] Erreur n8n (non-bloquante):', err);
+      });
+
       return data as Lead;
     },
     onSuccess: () => {

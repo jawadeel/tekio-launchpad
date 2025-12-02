@@ -28,6 +28,7 @@ const Contact = () => {
     const name = formData.get('name') as string;
     const email = formData.get('email') as string;
     const company = formData.get('company') as string;
+    const phone = formData.get('phone') as string;
     const message = formData.get('message') as string;
 
     try {
@@ -35,6 +36,7 @@ const Contact = () => {
         contact_name: name,
         email,
         company_name: company || undefined,
+        phone: phone || undefined,
         message,
         language: languageMap[language],
         source: 'contact_page',
@@ -70,7 +72,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Form & Info */}
-      <section className="tekio-section bg-background">
+      <section id="contact-form" className="tekio-section bg-background">
         <div className="tekio-container">
           <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
             {/* Form */}
@@ -113,6 +115,19 @@ const Contact = () => {
                     name="company"
                     type="text"
                     placeholder={t('contact.form.placeholder.company')}
+                    className="h-12"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
+                    {t('contact.phone')}
+                  </label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="+32 xxx xx xx xx"
                     className="h-12"
                   />
                 </div>
@@ -185,18 +200,46 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-medium text-foreground mb-1">{t('contact.info.phone.label')}</h4>
-                    <a href="https://wa.me/32470972921" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline flex items-center gap-2">
+                    <a href="tel:+32470972921" className="text-muted-foreground hover:text-foreground">
                       +32 470 97 29 21
                     </a>
                   </div>
                 </div>
               </div>
 
+              {/* WhatsApp CTA Block */}
+              <div className="mt-8 p-6 bg-[#25D366]/10 rounded-xl border border-[#25D366]/20">
+                <div className="flex items-center gap-3 mb-3">
+                  <MessageCircle className="h-6 w-6 text-[#25D366]" />
+                  <h4 className="font-semibold text-foreground">
+                    {language === 'fr' ? 'Besoin d\'une réponse rapide ?' :
+                     language === 'nl' ? 'Snel antwoord nodig?' :
+                     'Need a quick answer?'}
+                  </h4>
+                </div>
+                <p className="text-sm text-muted-foreground mb-4">
+                  {language === 'fr' ? 'Contactez-nous directement sur WhatsApp pour une réponse en moins de 24h.' :
+                   language === 'nl' ? 'Neem rechtstreeks contact met ons op via WhatsApp voor een antwoord binnen 24 uur.' :
+                   'Contact us directly on WhatsApp for a response within 24 hours.'}
+                </p>
+                <a
+                  href="https://wa.me/32470972921?text=Bonjour%20Tekio%2C%20je%20souhaite%20parler%20avec%20un%20expert%20MSP%20pour%20un%20audit%20gratuit%20de%20mon%20environnement%20IT."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] text-white font-medium rounded-lg hover:bg-[#20bd5a] transition-colors"
+                >
+                  <MessageCircle className="h-5 w-5" />
+                  {language === 'fr' ? 'Parler sur WhatsApp' :
+                   language === 'nl' ? 'Chat op WhatsApp' :
+                   'Chat on WhatsApp'}
+                </a>
+              </div>
+
               {/* Map placeholder */}
               <div className="mt-8 aspect-video bg-secondary rounded-xl flex items-center justify-center">
                 <div className="text-center">
                   <MapPin className="h-12 w-12 text-muted-foreground/50 mx-auto mb-2" />
-                  <p className="text-sm text-muted-foreground">Brussels, Belgium</p>
+                  <p className="text-sm text-muted-foreground">Tienen, Belgium</p>
                 </div>
               </div>
             </div>
