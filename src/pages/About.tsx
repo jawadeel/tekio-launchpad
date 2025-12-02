@@ -87,6 +87,25 @@ const About = () => {
             </div>
           </div>
 
+          {/* Video */}
+          <div className="bg-secondary rounded-2xl p-8 md:p-12 mb-16">
+            <h2 className="tekio-heading-2 text-foreground mb-8 text-center">{t('about.video.title') || 'Découvrez Tekio'}</h2>
+            <div className="aspect-video w-full max-w-4xl mx-auto rounded-xl overflow-hidden shadow-tekio-hover">
+              <iframe 
+                width="100%" 
+                height="100%" 
+                src="https://www.youtube.com/embed/jdDFalruEFY?si=oc_Fmd7T85X4A4J-" 
+                title="YouTube video player" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerPolicy="strict-origin-when-cross-origin" 
+                allowFullScreen
+                loading="lazy"
+                className="w-full h-full"
+              />
+            </div>
+          </div>
+
           {/* Values */}
           <div className="text-center">
             <h2 className="tekio-heading-2 text-foreground mb-8">{t('about.values.title')}</h2>
