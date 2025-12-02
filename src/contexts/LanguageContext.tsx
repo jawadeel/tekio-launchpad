@@ -238,7 +238,7 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.form.submit.sending': 'Envoi en cours...',
     'contact.info.address.label': 'Adresse',
     'contact.info.email.label': 'Email',
-    'contact.info.phone.label': 'Téléphone',
+    'contact.info.phone.label': 'WhatsApp Business',
       'contact.toast.success.title': 'Message envoyé !',
       'contact.toast.success.desc': 'Nous vous répondrons dans les plus brefs délais.',
 
@@ -539,7 +539,7 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.form.submit.sending': 'Verzenden...',
     'contact.info.address.label': 'Adres',
     'contact.info.email.label': 'E-mail',
-    'contact.info.phone.label': 'Telefoon',
+    'contact.info.phone.label': 'WhatsApp Business',
       'contact.toast.success.title': 'Bericht verzonden!',
       'contact.toast.success.desc': 'We nemen zo snel mogelijk contact met u op.',
 
@@ -840,7 +840,7 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.form.submit.sending': 'Sending...',
     'contact.info.address.label': 'Address',
     'contact.info.email.label': 'Email',
-    'contact.info.phone.label': 'Phone',
+    'contact.info.phone.label': 'WhatsApp Business',
       'contact.toast.success.title': 'Message sent!',
       'contact.toast.success.desc': 'We will respond as soon as possible.',
 
