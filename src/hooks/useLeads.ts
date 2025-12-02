@@ -78,8 +78,8 @@ export function useCreateLead() {
 
   return useMutation({
     mutationFn: async (input: CreateLeadInput) => {
-      // 1. Sauvegarde dans Supabase
-      const { data, error } = await supabase
+      // 1. Sauvegarde dans Supabase (sans .select() pour éviter erreur RLS avec anon)
+      const { error } = await supabase
         .from('leads')
         .insert({
           company_name: input.company_name || null,
@@ -91,9 +91,7 @@ export function useCreateLead() {
           nb_users_estimate: input.nb_users_estimate || null,
           message: input.message || null,
           status: 'new',
-        })
-        .select()
-        .single();
+        });
       
       if (error) throw error;
 
@@ -138,7 +136,7 @@ export function useCreateLead() {
         console.warn('[useCreateLead] Erreur email (non-bloquante):', err);
       });
 
-      return data as Lead;
+      return { email: input.email } as Lead;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['leads'] });
