@@ -89,7 +89,6 @@ const About = () => {
 
           {/* Video */}
           <div className="bg-secondary rounded-2xl p-8 md:p-12 mb-16">
-            <h2 className="tekio-heading-2 text-foreground mb-8 text-center">{t('about.video.title') || 'Découvrez Tekio'}</h2>
             <div className="aspect-video w-full max-w-4xl mx-auto rounded-xl overflow-hidden shadow-tekio-hover">
               <iframe 
                 width="100%" 
