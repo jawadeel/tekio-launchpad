@@ -63,9 +63,12 @@ const Footer = () => {
         </div>
 
         {/* Bottom */}
-        <div className="mt-12 pt-8 border-t border-accent-foreground/10">
+        <div className="mt-12 pt-8 border-t border-accent-foreground/10 space-y-2">
           <p className="text-sm text-accent-foreground/50 text-center">
             © {currentYear} Tekio. {t('footer.rights')}
+          </p>
+          <p className="text-xs text-accent-foreground/40 text-center">
+            HDC-AZG BV · BE0792.916.084 · Leuvensestraat 131 B2, 3300 Tienen
           </p>
         </div>
       </div>
