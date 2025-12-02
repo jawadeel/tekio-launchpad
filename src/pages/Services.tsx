@@ -4,12 +4,12 @@ import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-// Service images
-import serviceSupport from '@/assets/services/service-support.png';
-import serviceCloud from '@/assets/services/service-cloud.png';
-import serviceSecurity from '@/assets/services/service-security.png';
-import serviceTelecom from '@/assets/services/service-telecom.png';
-import serviceProjects from '@/assets/services/service-projects.png';
+// Service images (WebP format for better performance)
+import serviceSupport from '@/assets/services/service-support.webp';
+import serviceCloud from '@/assets/services/service-cloud.webp';
+import serviceSecurity from '@/assets/services/service-security.webp';
+import serviceTelecom from '@/assets/services/service-telecom.webp';
+import serviceProjects from '@/assets/services/service-projects.webp';
 
 const Services = () => {
   const { t } = useLanguage();
