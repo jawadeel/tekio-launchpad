@@ -12,55 +12,55 @@ const Services = () => {
       icon: Headphones,
       titleKey: 'services.support.title',
       descKey: 'services.support.desc',
-      details: [
-        'Réponse en moins de 15 minutes',
-        'Support multicanal (téléphone, email, chat)',
-        'Base de connaissances accessible 24/7',
-        'Suivi des tickets en temps réel',
+      detailKeys: [
+        'services.detail.support.1',
+        'services.detail.support.2',
+        'services.detail.support.3',
+        'services.detail.support.4',
       ],
     },
     {
       icon: Cloud,
       titleKey: 'services.cloud.title',
       descKey: 'services.cloud.desc',
-      details: [
-        'Migration Office 365 complète',
-        'Configuration et optimisation',
-        'Formation des utilisateurs',
-        'Gestion des licences',
+      detailKeys: [
+        'services.detail.cloud.1',
+        'services.detail.cloud.2',
+        'services.detail.cloud.3',
+        'services.detail.cloud.4',
       ],
     },
     {
       icon: Lock,
       titleKey: 'services.security.title',
       descKey: 'services.security.desc',
-      details: [
-        'Antivirus et anti-malware managé',
-        'Backup automatisé cloud',
-        'Test de récupération mensuel',
-        'Monitoring des menaces 24/7',
+      detailKeys: [
+        'services.detail.security.1',
+        'services.detail.security.2',
+        'services.detail.security.3',
+        'services.detail.security.4',
       ],
     },
     {
       icon: Phone,
       titleKey: 'services.telecom.title',
       descKey: 'services.telecom.desc',
-      details: [
-        'Téléphonie VoIP professionnelle',
-        'Intégration Teams / Microsoft',
-        'Numéros locaux et internationaux',
-        'Portabilité garantie',
+      detailKeys: [
+        'services.detail.telecom.1',
+        'services.detail.telecom.2',
+        'services.detail.telecom.3',
+        'services.detail.telecom.4',
       ],
     },
     {
       icon: FolderKanban,
       titleKey: 'services.projects.title',
       descKey: 'services.projects.desc',
-      details: [
-        'Migration infrastructure complète',
-        'Déploiement de nouveaux sites',
-        'Audit et conseil technique',
-        'Gestion de projet dédiée',
+      detailKeys: [
+        'services.detail.projects.1',
+        'services.detail.projects.2',
+        'services.detail.projects.3',
+        'services.detail.projects.4',
       ],
     },
   ];
@@ -101,10 +101,10 @@ const Services = () => {
                   </div>
                   <p className="text-muted-foreground mb-6">{t(service.descKey)}</p>
                   <ul className="space-y-3">
-                    {service.details.map((detail, i) => (
+                    {service.detailKeys.map((detailKey, i) => (
                       <li key={i} className="flex items-center gap-3 text-sm text-foreground">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                        {detail}
+                        {t(detailKey)}
                       </li>
                     ))}
                   </ul>

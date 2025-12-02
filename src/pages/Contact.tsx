@@ -41,12 +41,8 @@ const Contact = () => {
       });
       
       toast({
-        title: language === 'fr' ? "Message envoyé !" : 
-               language === 'nl' ? "Bericht verzonden!" : 
-               "Message sent!",
-        description: language === 'fr' ? "Nous vous répondrons dans les plus brefs délais." :
-                     language === 'nl' ? "We nemen zo snel mogelijk contact met u op." :
-                     "We will respond as soon as possible.",
+        title: t('contact.toast.success.title'),
+        description: t('contact.toast.success.desc'),
       });
       
       (e.target as HTMLFormElement).reset();
@@ -89,7 +85,7 @@ const Contact = () => {
                     name="name"
                     type="text"
                     required
-                    placeholder="John Doe"
+                    placeholder={t('contact.form.placeholder.name')}
                     className="h-12"
                   />
                 </div>
@@ -103,7 +99,7 @@ const Contact = () => {
                     name="email"
                     type="email"
                     required
-                    placeholder="john@company.be"
+                    placeholder={t('contact.form.placeholder.email')}
                     className="h-12"
                   />
                 </div>
@@ -116,7 +112,7 @@ const Contact = () => {
                     id="company"
                     name="company"
                     type="text"
-                    placeholder="Votre entreprise"
+                    placeholder={t('contact.form.placeholder.company')}
                     className="h-12"
                   />
                 </div>
@@ -130,7 +126,7 @@ const Contact = () => {
                     name="message"
                     required
                     rows={5}
-                    placeholder="Comment pouvons-nous vous aider ?"
+                    placeholder={t('contact.form.placeholder.message')}
                     className="resize-none"
                   />
                 </div>
@@ -143,7 +139,7 @@ const Contact = () => {
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
-                    'Envoi en cours...'
+                    t('contact.form.submit.sending')
                   ) : (
                     <>
                       {t('contact.send')}
@@ -164,7 +160,7 @@ const Contact = () => {
                     <MapPin className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-foreground mb-1">Adresse</h4>
+                    <h4 className="font-medium text-foreground mb-1">{t('contact.info.address.label')}</h4>
                     <p className="text-muted-foreground">
                       {t('contact.info.address')}
                     </p>
@@ -176,7 +172,7 @@ const Contact = () => {
                     <Mail className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-foreground mb-1">Email</h4>
+                    <h4 className="font-medium text-foreground mb-1">{t('contact.info.email.label')}</h4>
                     <a href="mailto:info@tekio.be" className="text-primary hover:underline">
                       info@tekio.be
                     </a>
@@ -188,7 +184,7 @@ const Contact = () => {
                     <Phone className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-foreground mb-1">Téléphone</h4>
+                    <h4 className="font-medium text-foreground mb-1">{t('contact.info.phone.label')}</h4>
                     <a href="tel:+3225551234" className="text-primary hover:underline">
                       +32 2 555 12 34
                     </a>

@@ -23,7 +23,7 @@ const About = () => {
               {t('about.title')}
             </h1>
             <p className="text-lg md:text-xl text-accent-foreground/70">
-              Un MSP moderne basé à Bruxelles, dédié aux micro-PME.
+              {t('about.hero.tagline')}
             </p>
           </div>
         </div>
@@ -75,8 +75,7 @@ const About = () => {
                   {t('about.founder.desc')}
                 </p>
                 <p className="text-foreground">
-                  "Mon objectif est simple : offrir aux PME les mêmes outils et le même niveau de service 
-                  que les grandes entreprises, mais à un prix accessible et avec une approche humaine."
+                  {t('about.founder.quote')}
                 </p>
               </div>
             </div>
@@ -101,11 +100,11 @@ const About = () => {
           {/* CTA */}
           <div className="mt-16 text-center">
             <p className="text-muted-foreground mb-6">
-              Prêt à simplifier votre IT ?
+              {t('about.cta.ready')}
             </p>
             <Link to="/contact">
               <Button variant="cta" size="xl">
-                Parlons de votre projet
+                {t('about.cta.discuss')}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>

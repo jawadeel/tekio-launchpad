@@ -12,29 +12,29 @@ const Method = () => {
       icon: BookOpen,
       titleKey: 'method.itil.title',
       descKey: 'method.itil.desc',
+      detailsKey: 'method.itil.details',
       color: 'from-primary/20 to-primary/5',
-      details: 'Gestion des incidents, des changements et des problèmes selon les standards internationaux.',
     },
     {
       icon: Cog,
       titleKey: 'method.automation.title',
       descKey: 'method.automation.desc',
+      detailsKey: 'method.automation.details',
       color: 'from-tekio-sky/20 to-tekio-sky/5',
-      details: 'Scripts automatisés, déploiements sans intervention, maintenance préventive.',
     },
     {
       icon: Brain,
       titleKey: 'method.ai.title',
       descKey: 'method.ai.desc',
+      detailsKey: 'method.ai.details',
       color: 'from-tekio-lime/20 to-tekio-lime/5',
-      details: 'Analyse prédictive, résolution automatique des incidents récurrents, chatbot intelligent.',
     },
     {
       icon: BarChart3,
       titleKey: 'method.reporting.title',
       descKey: 'method.reporting.desc',
+      detailsKey: 'method.reporting.details',
       color: 'from-tekio-navy/20 to-tekio-navy/5',
-      details: 'Dashboards en temps réel, rapports mensuels détaillés, KPIs personnalisés.',
     },
   ];
 
@@ -70,7 +70,7 @@ const Method = () => {
                   <div>
                     <h3 className="tekio-heading-3 text-foreground mb-2">{t(method.titleKey)}</h3>
                     <p className="text-muted-foreground mb-4">{t(method.descKey)}</p>
-                    <p className="text-sm text-foreground/80">{method.details}</p>
+                    <p className="text-sm text-foreground/80">{t(method.detailsKey)}</p>
                   </div>
                 </div>
 
@@ -87,18 +87,17 @@ const Method = () => {
             <div className="max-w-3xl mx-auto text-center">
               <div className="inline-flex items-center gap-2 bg-tekio-lime/20 text-tekio-lime px-4 py-2 rounded-full text-sm font-medium mb-6">
                 <Brain className="h-4 w-4" />
-                Intelligence Artificielle
+                {t('method.ai.badge')}
               </div>
               <h2 className="tekio-heading-2 text-accent-foreground mb-4">
-                L'IA au service de votre productivité
+                {t('method.ai.hero.title')}
               </h2>
               <p className="text-accent-foreground/70 mb-8">
-                Notre plateforme intègre des capacités d'intelligence artificielle pour anticiper les problèmes, 
-                automatiser les tâches répétitives et vous offrir un support toujours plus rapide et pertinent.
+                {t('method.ai.hero.desc')}
               </p>
               <Link to="/audit">
                 <Button variant="hero" size="lg">
-                  Découvrir nos capacités IA
+                  {t('method.ai.hero.cta')}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>

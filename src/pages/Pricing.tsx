@@ -34,7 +34,7 @@ const Pricing = () => {
     {
       name: t('pricing.bronze.name'),
       price: t('pricing.bronze.price'),
-      description: 'Pour les petites équipes qui démarrent',
+      description: t('pricing.plan.bronze.desc'),
       features: [
         { name: 'pricing.feature.support', included: true },
         { name: 'pricing.feature.monitoring', included: true },
@@ -50,7 +50,7 @@ const Pricing = () => {
     {
       name: t('pricing.silver.name'),
       price: t('pricing.silver.price'),
-      description: 'L\'équilibre parfait pour les PME',
+      description: t('pricing.plan.silver.desc'),
       features: [
         { name: 'pricing.feature.support', included: true },
         { name: 'pricing.feature.monitoring', included: true },
@@ -66,7 +66,7 @@ const Pricing = () => {
     {
       name: t('pricing.gold.name'),
       price: t('pricing.gold.price'),
-      description: 'Service premium tout inclus',
+      description: t('pricing.plan.gold.desc'),
       features: [
         { name: 'pricing.feature.support', included: true },
         { name: 'pricing.feature.monitoring', included: true },
@@ -103,18 +103,14 @@ const Pricing = () => {
         email,
         company_name: company || undefined,
         nb_users_estimate: employees || undefined,
-        message: `Plan intéressé: ${selectedPlan}\n\n${message || ''}`.trim(),
+        message: `${t('pricing.interest.prefix')} ${selectedPlan}\n\n${message || ''}`.trim(),
         language: languageMap[language],
         source: 'pricing_page',
       });
       
       toast({
-        title: language === 'fr' ? "Demande envoyée !" :
-               language === 'nl' ? "Aanvraag verzonden!" :
-               "Request sent!",
-        description: language === 'fr' ? "Nous vous contacterons rapidement avec une offre personnalisée." :
-                     language === 'nl' ? "We nemen snel contact met u op met een persoonlijk aanbod." :
-                     "We will contact you shortly with a personalized offer.",
+        title: t('pricing.toast.success.title'),
+        description: t('pricing.toast.success.desc'),
       });
       
       setShowContactDialog(false);
@@ -207,9 +203,9 @@ const Pricing = () => {
 
           {/* FAQ or additional info */}
           <div className="mt-20 max-w-3xl mx-auto text-center">
-            <h3 className="tekio-heading-3 text-foreground mb-4">Des questions sur nos offres ?</h3>
+            <h3 className="tekio-heading-3 text-foreground mb-4">{t('pricing.questions.title')}</h3>
             <p className="text-muted-foreground mb-6">
-              Chaque entreprise est unique. Contactez-nous pour une offre personnalisée adaptée à vos besoins.
+              {t('pricing.questions.desc')}
             </p>
             <Link to="/contact">
               <Button variant="outline" size="lg">
