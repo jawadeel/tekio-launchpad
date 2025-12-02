@@ -65,12 +65,8 @@ const Audit = () => {
       });
       
       toast({
-        title: language === 'fr' ? "Demande envoyée !" :
-               language === 'nl' ? "Aanvraag verzonden!" :
-               "Request sent!",
-        description: language === 'fr' ? "Nous vous contacterons sous 24h pour planifier votre audit." :
-                     language === 'nl' ? "We nemen binnen 24 uur contact met u op om uw audit te plannen." :
-                     "We will contact you within 24h to schedule your audit.",
+        title: t('audit.toast.success.title'),
+        description: t('audit.toast.success.desc'),
       });
       
       (e.target as HTMLFormElement).reset();
@@ -89,7 +85,7 @@ const Audit = () => {
           <div className="max-w-3xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 bg-tekio-lime/20 text-tekio-lime px-4 py-2 rounded-full text-sm font-medium mb-6">
               <CheckCircle className="h-4 w-4" />
-              100% Gratuit
+              {t('audit.free')}
             </div>
             <h1 className="tekio-heading-1 text-accent-foreground mb-6">
               {t('audit.title')}
@@ -108,7 +104,7 @@ const Audit = () => {
             {/* Benefits */}
             <div>
               <h2 className="tekio-heading-3 text-foreground mb-8">
-                Ce que comprend notre audit
+                {t('audit.includes.title')}
               </h2>
               <div className="space-y-6">
                 {benefits.map((benefit, index) => (
@@ -125,19 +121,19 @@ const Audit = () => {
 
               {/* Process */}
               <div className="mt-12 p-6 bg-secondary rounded-xl">
-                <h3 className="font-semibold text-foreground mb-4">Comment ça marche ?</h3>
+                <h3 className="font-semibold text-foreground mb-4">{t('audit.process.title')}</h3>
                 <ol className="space-y-3">
                   <li className="flex items-center gap-3">
                     <span className="w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center">1</span>
-                    <span className="text-sm text-muted-foreground">Remplissez le formulaire</span>
+                    <span className="text-sm text-muted-foreground">{t('audit.process.step1')}</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <span className="w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center">2</span>
-                    <span className="text-sm text-muted-foreground">Nous planifions un appel de 30 min</span>
+                    <span className="text-sm text-muted-foreground">{t('audit.process.step2')}</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <span className="w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center">3</span>
-                    <span className="text-sm text-muted-foreground">Recevez votre rapport personnalisé</span>
+                    <span className="text-sm text-muted-foreground">{t('audit.process.step3')}</span>
                   </li>
                 </ol>
               </div>
@@ -146,33 +142,33 @@ const Audit = () => {
             {/* Form */}
             <div className="tekio-card">
               <h2 className="tekio-heading-3 text-foreground mb-6">
-                Demander mon audit gratuit
+                {t('audit.form.title')}
               </h2>
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="firstName" className="block text-sm font-medium text-foreground mb-2">
-                      Prénom *
+                      {t('audit.form.firstName')} *
                     </label>
                     <Input
                       id="firstName"
                       name="firstName"
                       type="text"
                       required
-                      placeholder="Jean"
+                      placeholder={t('audit.form.placeholder.firstName')}
                       className="h-11"
                     />
                   </div>
                   <div>
                     <label htmlFor="lastName" className="block text-sm font-medium text-foreground mb-2">
-                      Nom *
+                      {t('audit.form.lastName')} *
                     </label>
                     <Input
                       id="lastName"
                       name="lastName"
                       type="text"
                       required
-                      placeholder="Dupont"
+                      placeholder={t('audit.form.placeholder.lastName')}
                       className="h-11"
                     />
                   </div>
@@ -180,55 +176,55 @@ const Audit = () => {
 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                    Email professionnel *
+                    {t('audit.form.email')} *
                   </label>
                   <Input
                     id="email"
                     name="email"
                     type="email"
                     required
-                    placeholder="jean@entreprise.be"
+                    placeholder={t('audit.form.placeholder.email')}
                     className="h-11"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="company" className="block text-sm font-medium text-foreground mb-2">
-                    Entreprise *
+                    {t('audit.form.company')} *
                   </label>
                   <Input
                     id="company"
                     name="company"
                     type="text"
                     required
-                    placeholder="Nom de votre entreprise"
+                    placeholder={t('audit.form.placeholder.company')}
                     className="h-11"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
-                    Téléphone
+                    {t('audit.form.phone')}
                   </label>
                   <Input
                     id="phone"
                     name="phone"
                     type="tel"
-                    placeholder="+32 XXX XX XX XX"
+                    placeholder={t('audit.form.placeholder.phone')}
                     className="h-11"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="employees" className="block text-sm font-medium text-foreground mb-2">
-                    Nombre d'employés
+                    {t('audit.form.employees')}
                   </label>
                   <select
                     id="employees"
                     name="employees"
                     className="w-full h-11 px-3 rounded-lg border border-input bg-background text-sm"
                   >
-                    <option value="">Sélectionnez</option>
+                    <option value="">{t('audit.form.select.placeholder')}</option>
                     <option value="1-5">1-5</option>
                     <option value="6-10">6-10</option>
                     <option value="11-25">11-25</option>
@@ -239,13 +235,13 @@ const Audit = () => {
 
                 <div>
                   <label htmlFor="needs" className="block text-sm font-medium text-foreground mb-2">
-                    Vos besoins principaux
+                    {t('audit.form.needs')}
                   </label>
                   <Textarea
                     id="needs"
                     name="needs"
                     rows={3}
-                    placeholder="Décrivez brièvement votre situation IT actuelle..."
+                    placeholder={t('audit.form.placeholder.needs')}
                     className="resize-none"
                   />
                 </div>
@@ -258,7 +254,7 @@ const Audit = () => {
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
-                    'Envoi en cours...'
+                    t('audit.form.submit.sending')
                   ) : (
                     <>
                       {t('audit.cta')}
@@ -268,7 +264,7 @@ const Audit = () => {
                 </Button>
 
                 <p className="text-xs text-muted-foreground text-center">
-                  En soumettant ce formulaire, vous acceptez d'être contacté par Tekio.
+                  {t('audit.form.privacy')}
                 </p>
               </form>
             </div>

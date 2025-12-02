@@ -63,10 +63,10 @@ const ServicesSection = () => {
 
           {/* CTA Card */}
           <div className="tekio-card bg-primary text-primary-foreground flex flex-col justify-center items-center text-center">
-            <p className="text-lg font-medium mb-4">Découvrez tous nos services</p>
+            <p className="text-lg font-medium mb-4">{t('services.cta.discover')}</p>
             <Link to="/services">
               <Button variant="heroOutline" size="sm">
-                En savoir plus
+                {t('services.cta.learn')}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
