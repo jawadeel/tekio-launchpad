@@ -68,7 +68,7 @@ const Footer = () => {
             © {currentYear} Tekio. {t('footer.rights')}
           </p>
           <p className="text-xs text-accent-foreground/40 text-center">
-            HDC-AZG BV · BE0762.916.084 · Leuvensestraat 131 B2, 3300 Tienen
+            HDC-AZG SRL · BE0762.916.084 · Leuvensestraat 131 B2, 3300 Tienen, {t('footer.country')}
           </p>
         </div>
       </div>
