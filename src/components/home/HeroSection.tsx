@@ -46,14 +46,20 @@ const HeroSection = () => {
             </Link>
           </div>
 
-          {/* Trust indicators */}
+          {/* Video */}
           <div className="mt-16 animate-fade-up animation-delay-300">
-            <p className="text-sm text-accent-foreground/50 mb-4">Trusted by SMEs in Brussels</p>
-            <div className="flex items-center justify-center gap-8 opacity-50">
-              <div className="h-8 w-24 bg-accent-foreground/20 rounded" />
-              <div className="h-8 w-20 bg-accent-foreground/20 rounded" />
-              <div className="h-8 w-28 bg-accent-foreground/20 rounded" />
-              <div className="h-8 w-24 bg-accent-foreground/20 rounded hidden sm:block" />
+            <div className="aspect-video max-w-2xl mx-auto rounded-xl overflow-hidden shadow-2xl">
+              <iframe 
+                width="100%" 
+                height="100%" 
+                src="https://www.youtube.com/embed/J2icSM2EfgI?si=AXGgDqCKSbxVJcez&start=19" 
+                title="YouTube video player" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerPolicy="strict-origin-when-cross-origin" 
+                allowFullScreen
+                className="w-full h-full"
+              />
             </div>
           </div>
         </div>
