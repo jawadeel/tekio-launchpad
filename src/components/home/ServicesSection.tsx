@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Headphones, Cloud, Lock, Phone, FolderKanban, ArrowRight } from 'lucide-react';
+import { Headphones, Cloud, Lock, Phone, FolderKanban, ArrowRight, Camera, Globe } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 
@@ -31,6 +31,16 @@ const ServicesSection = () => {
       icon: FolderKanban,
       titleKey: 'services.projects.title',
       descKey: 'services.projects.desc',
+    },
+    {
+      icon: Camera,
+      titleKey: 'services.cameras.title',
+      descKey: 'services.cameras.desc',
+    },
+    {
+      icon: Globe,
+      titleKey: 'services.digital.title',
+      descKey: 'services.digital.desc',
     },
   ];
 
