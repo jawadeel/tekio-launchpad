@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Headphones, Cloud, Lock, Phone, FolderKanban, ArrowRight } from 'lucide-react';
+import { Headphones, Cloud, Lock, Phone, FolderKanban, ArrowRight, Camera, Globe } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -10,6 +10,8 @@ import serviceCloud from '@/assets/services/service-cloud.webp';
 import serviceSecurity from '@/assets/services/service-security.webp';
 import serviceTelecom from '@/assets/services/service-telecom.webp';
 import serviceProjects from '@/assets/services/service-projects.webp';
+import serviceCameras from '@/assets/services/service-cameras.webp';
+import serviceDigital from '@/assets/services/service-digital.webp';
 
 const Services = () => {
   const { t } = useLanguage();
@@ -75,6 +77,36 @@ const Services = () => {
         'services.detail.projects.4',
       ],
     },
+    {
+      icon: Camera,
+      image: serviceCameras,
+      titleKey: 'services.cameras.title',
+      descKey: 'services.cameras.desc',
+      paragraphKey: 'services.cameras.paragraph',
+      detailKeys: [
+        'services.detail.cameras.1',
+        'services.detail.cameras.2',
+        'services.detail.cameras.3',
+        'services.detail.cameras.4',
+        'services.detail.cameras.5',
+        'services.detail.cameras.6',
+      ],
+    },
+    {
+      icon: Globe,
+      image: serviceDigital,
+      titleKey: 'services.digital.title',
+      descKey: 'services.digital.desc',
+      paragraphKey: 'services.digital.paragraph',
+      detailKeys: [
+        'services.detail.digital.1',
+        'services.detail.digital.2',
+        'services.detail.digital.3',
+        'services.detail.digital.4',
+        'services.detail.digital.5',
+        'services.detail.digital.6',
+      ],
+    },
   ];
 
   return (
@@ -120,6 +152,11 @@ const Services = () => {
                       </li>
                     ))}
                   </ul>
+                  {service.paragraphKey && (
+                    <p className="text-muted-foreground mt-6 text-sm italic border-l-2 border-primary/30 pl-4">
+                      {t(service.paragraphKey)}
+                    </p>
+                  )}
                 </div>
                 <div className={`aspect-video rounded-xl overflow-hidden bg-gradient-to-br from-primary/5 to-tekio-sky/5 flex items-center justify-center group/image ${
                   index % 2 !== 0 ? 'md:order-1' : ''

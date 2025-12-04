@@ -171,6 +171,29 @@ const translations: Record<Language, Record<string, string>> = {
     'services.detail.projects.2': 'Déploiement de nouveaux sites',
     'services.detail.projects.3': 'Audit et conseil technique',
     'services.detail.projects.4': 'Gestion de projet dédiée',
+    
+    // Services - Cameras
+    'services.cameras.title': 'Caméras & Vidéosurveillance',
+    'services.cameras.desc': 'Solutions de vidéosurveillance modernes et sécurisées.',
+    'services.cameras.paragraph': 'Tekio vous aide à protéger vos équipes, vos biens et vos données grâce à une solution de vidéosurveillance moderne, fiable et entièrement gérée.',
+    'services.detail.cameras.1': 'Installation complète de caméras IP (Ubiquiti, Hikvision, Reolink Pro…)',
+    'services.detail.cameras.2': 'Configuration réseau dédiée (PoE, VLAN, accès sécurisé)',
+    'services.detail.cameras.3': 'Visualisation à distance sur mobile et ordinateur',
+    'services.detail.cameras.4': 'Enregistrement sécurisé local ou cloud',
+    'services.detail.cameras.5': 'Maintenance proactive et alertes automatiques',
+    'services.detail.cameras.6': 'Dépannage rapide avec support en moins de 15 minutes',
+    
+    // Services - Digital Identity
+    'services.digital.title': 'Identité Numérique & Création de Site Web',
+    'services.digital.desc': 'Gestion complète de votre présence en ligne.',
+    'services.digital.paragraph': 'Tekio centralise la gestion de votre identité digitale : simple, fiable et prête pour la croissance de votre entreprise.',
+    'services.detail.digital.1': 'Gestion complète de nom de domaine',
+    'services.detail.digital.2': 'Configuration DNS sécurisée et certificats SSL',
+    'services.detail.digital.3': 'Création de sites vitrines modernes (1–5 pages)',
+    'services.detail.digital.4': 'Intégration email professionnelle Microsoft 365',
+    'services.detail.digital.5': 'Hébergement, maintenance et mises à jour',
+    'services.detail.digital.6': 'Support continu pour vos modifications et évolutions',
+    
     'services.cta.discover': 'Découvrez tous nos services',
     'services.cta.learn': 'En savoir plus',
     
@@ -600,6 +623,29 @@ const translations: Record<Language, Record<string, string>> = {
     'services.detail.projects.2': 'Uitrol van nieuwe sites',
     'services.detail.projects.3': 'Audit en technisch advies',
     'services.detail.projects.4': 'Toegewijd projectbeheer',
+    
+    // Services - Cameras
+    'services.cameras.title': 'Camera\'s & Videobewaking',
+    'services.cameras.desc': 'Moderne en beveiligde videobewakingsoplossingen.',
+    'services.cameras.paragraph': 'Tekio biedt een moderne, betrouwbare en volledig beheerde beveiligingsoplossing voor uw onderneming.',
+    'services.detail.cameras.1': 'Volledige installatie van IP-camera\'s (Ubiquiti, Hikvision, Reolink Pro…)',
+    'services.detail.cameras.2': 'Specifieke netwerkconfiguratie (PoE, VLAN, beveiligde toegang)',
+    'services.detail.cameras.3': 'Externe weergave via smartphone en desktop',
+    'services.detail.cameras.4': 'Veilige opslag lokaal of in de cloud',
+    'services.detail.cameras.5': 'Proactief onderhoud en automatische waarschuwingen',
+    'services.detail.cameras.6': 'Snelle troubleshooting met support binnen 15 minuten',
+    
+    // Services - Digital Identity
+    'services.digital.title': 'Digitale Identiteit & Websitecreatie',
+    'services.digital.desc': 'Volledig beheer van uw online aanwezigheid.',
+    'services.digital.paragraph': 'Tekio beheert uw digitale identiteit op één plek: eenvoudig, betrouwbaar en klaar voor groei.',
+    'services.detail.digital.1': 'Volledig beheer van domeinnamen',
+    'services.detail.digital.2': 'Beveiligde DNS-configuratie en SSL-certificaten',
+    'services.detail.digital.3': 'Creatie van moderne bedrijfswebsites (1–5 pagina\'s)',
+    'services.detail.digital.4': 'Integratie van professionele Microsoft 365-e-mails',
+    'services.detail.digital.5': 'Hosting, onderhoud en updates',
+    'services.detail.digital.6': 'Doorlopende ondersteuning voor wijzigingen en uitbreidingen',
+    
     'services.cta.discover': 'Ontdek al onze diensten',
     'services.cta.learn': 'Meer weten',
     
@@ -1029,6 +1075,29 @@ const translations: Record<Language, Record<string, string>> = {
     'services.detail.projects.2': 'Deployment of new sites',
     'services.detail.projects.3': 'Audit and technical advice',
     'services.detail.projects.4': 'Dedicated project management',
+    
+    // Services - Cameras
+    'services.cameras.title': 'Cameras & Video Surveillance',
+    'services.cameras.desc': 'Modern and secure video surveillance solutions.',
+    'services.cameras.paragraph': 'Tekio provides a modern, reliable and fully managed surveillance solution for your business.',
+    'services.detail.cameras.1': 'Complete installation of IP cameras (Ubiquiti, Hikvision, Reolink Pro…)',
+    'services.detail.cameras.2': 'Dedicated network configuration (PoE, VLAN, secure access)',
+    'services.detail.cameras.3': 'Remote viewing on mobile and desktop',
+    'services.detail.cameras.4': 'Secure recording locally or in the cloud',
+    'services.detail.cameras.5': 'Proactive maintenance and automated alerts',
+    'services.detail.cameras.6': 'Fast troubleshooting with support in under 15 minutes',
+    
+    // Services - Digital Identity
+    'services.digital.title': 'Digital Identity & Website Creation',
+    'services.digital.desc': 'Complete management of your online presence.',
+    'services.digital.paragraph': 'Tekio centralizes your digital identity—simple, secure and built for business growth.',
+    'services.detail.digital.1': 'Full domain name management',
+    'services.detail.digital.2': 'Secure DNS configuration and SSL certificates',
+    'services.detail.digital.3': 'Creation of modern showcase websites (1–5 pages)',
+    'services.detail.digital.4': 'Professional Microsoft 365 email integration',
+    'services.detail.digital.5': 'Hosting, maintenance and updates',
+    'services.detail.digital.6': 'Continuous support for changes and improvements',
+    
     'services.cta.discover': 'Discover all our services',
     'services.cta.learn': 'Learn more',
     
