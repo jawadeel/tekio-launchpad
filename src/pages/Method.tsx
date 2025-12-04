@@ -3,43 +3,36 @@ import { BookOpen, Cog, Brain, BarChart3, ArrowRight } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
-
 const Method = () => {
-  const { t } = useLanguage();
-
-  const methods = [
-    {
-      icon: BookOpen,
-      titleKey: 'method.itil.title',
-      descKey: 'method.itil.desc',
-      detailsKey: 'method.itil.details',
-      color: 'from-primary/20 to-primary/5',
-    },
-    {
-      icon: Cog,
-      titleKey: 'method.automation.title',
-      descKey: 'method.automation.desc',
-      detailsKey: 'method.automation.details',
-      color: 'from-tekio-sky/20 to-tekio-sky/5',
-    },
-    {
-      icon: Brain,
-      titleKey: 'method.ai.title',
-      descKey: 'method.ai.desc',
-      detailsKey: 'method.ai.details',
-      color: 'from-tekio-lime/20 to-tekio-lime/5',
-    },
-    {
-      icon: BarChart3,
-      titleKey: 'method.reporting.title',
-      descKey: 'method.reporting.desc',
-      detailsKey: 'method.reporting.details',
-      color: 'from-tekio-navy/20 to-tekio-navy/5',
-    },
-  ];
-
-  return (
-    <Layout>
+  const {
+    t
+  } = useLanguage();
+  const methods = [{
+    icon: BookOpen,
+    titleKey: 'method.itil.title',
+    descKey: 'method.itil.desc',
+    detailsKey: 'method.itil.details',
+    color: 'from-primary/20 to-primary/5'
+  }, {
+    icon: Cog,
+    titleKey: 'method.automation.title',
+    descKey: 'method.automation.desc',
+    detailsKey: 'method.automation.details',
+    color: 'from-tekio-sky/20 to-tekio-sky/5'
+  }, {
+    icon: Brain,
+    titleKey: 'method.ai.title',
+    descKey: 'method.ai.desc',
+    detailsKey: 'method.ai.details',
+    color: 'from-tekio-lime/20 to-tekio-lime/5'
+  }, {
+    icon: BarChart3,
+    titleKey: 'method.reporting.title',
+    descKey: 'method.reporting.desc',
+    detailsKey: 'method.reporting.details',
+    color: 'from-tekio-navy/20 to-tekio-navy/5'
+  }];
+  return <Layout>
       {/* Hero */}
       <section className="bg-accent py-20 md:py-28">
         <div className="tekio-container">
@@ -58,11 +51,7 @@ const Method = () => {
       <section className="tekio-section bg-background">
         <div className="tekio-container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {methods.map((method, index) => (
-              <div
-                key={method.titleKey}
-                className={`relative overflow-hidden rounded-2xl p-8 bg-gradient-to-br ${method.color} border border-border`}
-              >
+            {methods.map((method, index) => <div key={method.titleKey} className={`relative overflow-hidden rounded-2xl p-8 bg-gradient-to-br ${method.color} border border-border`}>
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-card shadow-sm flex items-center justify-center">
                     <method.icon className="h-7 w-7 text-primary" />
@@ -75,11 +64,8 @@ const Method = () => {
                 </div>
 
                 {/* Decorative number */}
-                <span className="absolute bottom-4 right-6 text-8xl font-bold text-foreground/5">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-              </div>
-            ))}
+                
+              </div>)}
           </div>
 
           {/* AI Section Highlight */}
@@ -105,8 +91,6 @@ const Method = () => {
           </div>
         </div>
       </section>
-    </Layout>
-  );
+    </Layout>;
 };
-
 export default Method;
