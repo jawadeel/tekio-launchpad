@@ -23,7 +23,7 @@ const Privacy = () => {
             <div className="bg-muted/50 p-4 rounded-lg text-muted-foreground">
               <p className="font-semibold">HDC-AZG SRL</p>
               <p>Leuvensestraat 131 B2</p>
-              <p>3300 Tienen, Belgique</p>
+              <p>3300 Tienen, {t('footer.country')}</p>
               <p className="mt-2">{t('privacy.controller.email')}: <strong>info@tekio.be</strong></p>
             </div>
             <p className="text-muted-foreground mt-4">
@@ -249,9 +249,9 @@ const Privacy = () => {
               {t('privacy.complaint.intro')}
             </p>
             <div className="bg-muted/50 p-4 rounded-lg text-muted-foreground">
-              <p className="font-semibold">Autorité de protection des données (APD / GBA)</p>
-              <p>Rue de la Presse 35</p>
-              <p>1000 Bruxelles, Belgique</p>
+              <p className="font-semibold">{t('privacy.dpa.name')}</p>
+              <p>{t('privacy.dpa.address1')}</p>
+              <p>{t('privacy.dpa.address2')}</p>
               <p>
                 <a href="https://www.autoriteprotectiondonnees.be/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
                   https://www.autoriteprotectiondonnees.be/

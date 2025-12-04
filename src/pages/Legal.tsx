@@ -21,7 +21,7 @@ const Legal = () => {
             </p>
             <div className="bg-muted/50 p-4 rounded-lg text-muted-foreground">
               <p className="font-semibold">HDC-AZG SRL</p>
-              <p>{t('legal.editor.address')}: Leuvensestraat 131 B2, 3300 Tienen, Belgique</p>
+              <p>{t('legal.editor.address')}: Leuvensestraat 131 B2, 3300 Tienen, {t('footer.country')}</p>
               <p>{t('legal.editor.bce')}: 0762.916.084</p>
               <p>{t('legal.editor.vat')}: BE0762916084</p>
               <p>{t('legal.editor.email')}: info@tekio.be</p>
