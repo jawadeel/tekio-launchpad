@@ -57,10 +57,10 @@ const Contact = () => {
       <section className="bg-accent py-20 md:py-28 px-0 shadow-2xl rounded-lg">
         <div className="tekio-container">
           <div className="max-w-3xl">
-            <h1 className="tekio-heading-1 text-accent-foreground mb-6">
+            <h1 className="tekio-heading-1 text-accent-foreground mb-6 font-serif">
               {t('contact.title')}
             </h1>
-            <p className="text-lg md:text-xl text-accent-foreground/70">
+            <p className="text-lg md:text-xl text-accent-foreground/70 font-sans font-bold">
               {t('contact.subtitle')}
             </p>
           </div>
